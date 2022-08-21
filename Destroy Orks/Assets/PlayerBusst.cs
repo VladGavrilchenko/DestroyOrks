@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBusst : MonoBehaviour
+interface IPlayerDamage
 {
-    private int currentPower;
+    int GetPlayerDamage();
+}
+
+public class PlayerBusst : MonoBehaviour , IPlayerDamage
+{
+    [SerializeField] private int currentPower;
 
     private void AddPower(int busst)
     {
@@ -17,5 +22,10 @@ public class PlayerBusst : MonoBehaviour
         {
             AddPower(other.GetComponent<Busst>().GetBusst());
         }
+    }
+
+    public int GetPlayerDamage()
+    {
+        return currentPower;
     }
 }

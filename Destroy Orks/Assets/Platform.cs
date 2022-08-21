@@ -23,7 +23,7 @@ public class Platform : MonoBehaviour
     {
         foreach(Enemy enemy in _enemies)
         {
-            enemy.AddEnemyPower(addBusst);
+            enemy.AddHitPoint(addBusst);
         }
     }
 
