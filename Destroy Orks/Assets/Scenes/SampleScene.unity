@@ -1797,6 +1797,7 @@ GameObject:
   - component: {fileID: 985436594}
   - component: {fileID: 985436593}
   - component: {fileID: 985436595}
+  - component: {fileID: 985436596}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1906,7 +1907,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 985436593}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 985436596}
+        m_TargetAssemblyTypeName: ShopPower, Assembly-CSharp
+        m_MethodName: BayBusst
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &985436596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985436591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def4b1f3a46f97041ab5d6854e2b5f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _costBusst: 1
+  _addToCost: 2
+  _addBust: 2
 --- !u!1 &1047731205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,6 +2042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textCountMoney: {fileID: 89849578}
+  _countMoney: 50
 --- !u!4 &1058576314
 Transform:
   m_ObjectHideFlags: 0

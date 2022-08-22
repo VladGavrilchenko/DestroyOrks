@@ -6,7 +6,7 @@ using TMPro;
 public class Bank : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _textCountMoney;
-    private int _countMoney;
+    [SerializeField] private int _countMoney;
 
     private void Start()
     {
@@ -18,9 +18,20 @@ public class Bank : MonoBehaviour
         _textCountMoney.text = _countMoney.ToString();
     }
 
+    public int GetMoney()
+    {
+        return _countMoney;
+    }
+
     public void AddMoney(int addMoney)
     {
         _countMoney += addMoney;
+        UpdateUI();
+    }
+
+    public void Deposit(int depositMoney)
+    {
+        _countMoney -= depositMoney;
         UpdateUI();
     }
 
