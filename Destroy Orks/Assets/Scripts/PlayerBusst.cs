@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 interface IPlayerDamage
 {
@@ -10,10 +12,22 @@ interface IPlayerDamage
 public class PlayerBusst : MonoBehaviour , IPlayerDamage
 {
     [SerializeField] private int _playerDamage;
+    [SerializeField] TextMeshProUGUI _damageText;
 
-    private void AddPower(int busst)
+    private void Start()
+    {
+        UpdateDamageText();
+    }
+
+    public void AddPower(int busst)
     {
         _playerDamage += busst;
+        UpdateDamageText();
+    }
+
+    private void UpdateDamageText()
+    {
+        _damageText.text = _playerDamage.ToString();
     }
 
     private void OnTriggerEnter(Collider other)

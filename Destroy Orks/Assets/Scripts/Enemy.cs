@@ -6,6 +6,7 @@ using TMPro;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _enemyHitPoint;
+    [SerializeField] private int _coutnAddMoney;
     private IPlayerDamage _iPlayerDamage;
     private TextMeshPro _textHitPoint;
     private Animator _animator;
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
     {
         _animator.SetTrigger("Death");
         GetComponent<Collider>().enabled = false;
+        FindObjectOfType<Bank>().AddMoney(_coutnAddMoney);
     }
 
     private void UpdateHitPointText()
