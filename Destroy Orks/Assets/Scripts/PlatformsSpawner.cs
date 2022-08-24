@@ -18,8 +18,9 @@ public class PlatformsSpawner : MonoBehaviour
 
     private void GeneretLevel()
     {
-        SpawnPlatform(_starPlatform);
         _spawnVector = transform.position;
+
+        SpawnPlatform(_starPlatform);
         for (int i = 0; i < _maxCountPlatforms; i++)
         {
             SpawnPlatform(GetRandomPlatform());
