@@ -7,6 +7,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private LayerMask _layer;
     [SerializeField] private float _distanceToShooting;
     private ParticleSystem _shootParticle;
+
     private void Start()
     {
         _shootParticle = GetComponentInChildren<ParticleSystem>();
@@ -19,11 +20,11 @@ public class PlayerShooting : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, _distanceToShooting, _layer))
         {
-            _shootParticle.gameObject.SetActive(true);
+            _shootParticle.enableEmission = true;
         }
         else
         {
-            _shootParticle.gameObject.SetActive(false);
+            _shootParticle.enableEmission = false;
         }
     }
 

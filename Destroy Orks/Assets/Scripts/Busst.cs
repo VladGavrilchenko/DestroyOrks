@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Busst : MonoBehaviour
 {
-    [SerializeField] int busst;
+    [SerializeField] private int _busst;
 
     public int GetBusst()
     {
-        return busst;
+        return _busst;
     }
 }

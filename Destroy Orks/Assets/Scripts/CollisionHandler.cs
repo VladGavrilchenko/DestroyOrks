@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    [SerializeField] private int _indexMainScene;
     [SerializeField] private float _loadDelayCrash = 1f;
     [SerializeField] private float _loadDelayWin = 1f;
-
 
     public void Crash()
     {
         GetComponent<PlayerMove>().enabled= false;
         GetComponent<PlayerShooting>().enabled= false;
         GetComponentInChildren<Animator>().SetTrigger("Death");
-        Invoke("ReloadLevel", _loadDelayCrash);
+        Invoke("LoadMainScene", _loadDelayCrash);
     }
 
     public void EndLevel()
@@ -22,11 +22,11 @@ public class CollisionHandler : MonoBehaviour
         GetComponent<PlayerMove>().enabled = false;
         GetComponent<PlayerShooting>().enabled = false;
         GetComponentInChildren<Animator>().SetTrigger("Win");
-        Invoke("ReloadLevel", _loadDelayWin);
+        Invoke("LoadMainScene", _loadDelayWin);
     }
 
-    private void ReloadLevel()
+    private void LoadMainScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(_indexMainScene);
     }
 }

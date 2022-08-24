@@ -384,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyHitPoint: 80
+  _coutnAddMoney: 2
 --- !u!65 &6016877815380696125
 BoxCollider:
   m_ObjectHideFlags: 0

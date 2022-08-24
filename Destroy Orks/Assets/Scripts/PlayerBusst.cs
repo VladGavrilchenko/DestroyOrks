@@ -14,6 +14,20 @@ public class PlayerBusst : MonoBehaviour , IPlayerDamage
     [SerializeField] private int _playerDamage;
     [SerializeField] TextMeshProUGUI _damageText;
 
+    void Awake()
+    {
+        int numGameSessions = FindObjectsOfType<PlayerBusst>().Length;
+        if (numGameSessions > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+
     private void Start()
     {
         UpdateDamageText();

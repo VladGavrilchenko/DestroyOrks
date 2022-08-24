@@ -35,7 +35,6 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     public void ShowAd(Bank bank)
     {
         this.bank = bank;
-        bank.AddMoney(10);
         Advertisement.Show("rewardedTest");
     }
 
@@ -59,10 +58,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         switch (showResult)
         {
             case ShowResult.Finished:
-               
-                break;
+                    bank.AddMoney(10);
+                    break;
             case ShowResult.Skipped:
-                
+                bank.AddMoney(10);
                 break;
             case ShowResult.Failed:
                 Debug.Log(showResult.ToString());

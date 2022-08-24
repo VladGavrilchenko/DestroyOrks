@@ -4878,6 +4878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerDamage: 0
+  _damageText: {fileID: 0}
 --- !u!54 &7947593465189020650
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4920,6 +4921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5791661744175954d96213bfff907714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _indexMainScene: 0
   _loadDelayCrash: 1
   _loadDelayWin: 3
 --- !u!114 &7947593465189020645
@@ -4936,7 +4938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   _distanceToShooting: 60
 --- !u!1001 &7947593463739305848
 PrefabInstance:

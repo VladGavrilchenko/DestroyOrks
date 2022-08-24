@@ -7,21 +7,21 @@ public class ShopPower : MonoBehaviour
     [SerializeField] private int _costBusst;
     [SerializeField] private int _addToCost;
     [SerializeField] private int _addBust;
-    private Bank bank;
-    private PlayerBusst playerBusst;
+    private Bank _bank;
+    private PlayerBusst _playerBusst;
 
     private void Start()
     {
-        bank = FindObjectOfType<Bank>();
-        playerBusst = FindObjectOfType<PlayerBusst>();
+        _bank = FindObjectOfType<Bank>();
+        _playerBusst = FindObjectOfType<PlayerBusst>();
     }
 
-    public void BayBusst()
+    public void BuyBusst()
     {
-        if(_costBusst <= bank.GetMoney())
+        if(_costBusst <= _bank.GetMoney())
         {
-            bank.Deposit(_costBusst);
-            playerBusst.AddPower(_addBust);
+            _bank.Deposit(_costBusst);
+            _playerBusst.AddPower(_addBust);
             _costBusst += _addToCost;
         }
     }
