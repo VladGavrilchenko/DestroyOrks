@@ -6,6 +6,7 @@ public class PlatformsSpawner : MonoBehaviour
 {
     [SerializeField] private StartPlatform _starPlatform;
     [SerializeField] private FinishPlatform _finishPlatform;
+    [SerializeField] private BossPlatform _bossPlatform;
     [SerializeField] private Platform[] _platforms;
     [SerializeField] private int _maxCountPlatforms;
     private Vector3 _spawnVector;
@@ -24,6 +25,7 @@ public class PlatformsSpawner : MonoBehaviour
         {
             SpawnPlatform(GetRandomPlatform());
         }
+        SpawnPlatform(_bossPlatform);
         SpawnPlatform(_finishPlatform);
     }
 

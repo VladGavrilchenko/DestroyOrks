@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         _animator.SetTrigger("Death");
+        _textHitPoint.enabled = false;
         GetComponent<Collider>().enabled = false;
         FindObjectOfType<Bank>().AddMoney(_coutnAddMoney);
     }

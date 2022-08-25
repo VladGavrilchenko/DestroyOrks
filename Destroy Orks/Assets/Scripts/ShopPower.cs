@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ShopPower : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ShopPower : MonoBehaviour
     [SerializeField] private int _addBust;
     private Bank _bank;
     private PlayerBusst _playerBusst;
+    public UnityEvent NewCostEvent;
 
     private void Start()
     {
@@ -23,6 +25,12 @@ public class ShopPower : MonoBehaviour
             _bank.Deposit(_costBusst);
             _playerBusst.AddPower(_addBust);
             _costBusst += _addToCost;
+            NewCostEvent.Invoke();
         }
+    }
+
+    public int GetCost()
+    {
+        return _costBusst;
     }
 }

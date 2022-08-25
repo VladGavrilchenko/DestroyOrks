@@ -8,6 +8,7 @@ public class Bank : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textCountMoney;
     [SerializeField] private int _countMoney;
 
+
     private void Start()
     {
         UpdateUI();

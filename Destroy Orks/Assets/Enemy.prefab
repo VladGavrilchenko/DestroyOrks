@@ -383,8 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce634a1efa6e5464692d31b7aaebad1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyHitPoint: 80
-  _coutnAddMoney: 2
+  _enemyHitPoint: 25
+  _coutnAddMoney: 1
 --- !u!65 &6016877815380696125
 BoxCollider:
   m_ObjectHideFlags: 0
