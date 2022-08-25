@@ -4617,6 +4617,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 89350301406741264, guid: 1549dd45f11557d44a1d06bac8b6a093,
+        type: 3}
+      propertyPath: _addHitPointEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2508062228658042223, guid: 1549dd45f11557d44a1d06bac8b6a093,
         type: 3}
       propertyPath: m_AnchorMax.y

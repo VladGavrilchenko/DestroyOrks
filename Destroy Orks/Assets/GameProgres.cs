@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameProgres : MonoBehaviour
 {
-    private int _addHitPointEnemy;
+    [SerializeField] private int _addHitPointEnemy;
     private int _levelCount;
 
     void Awake()
@@ -20,6 +20,11 @@ public class GameProgres : MonoBehaviour
         }
     }
 
+    public int GetAddHitPointEnemy()
+    {
+        return _addHitPointEnemy;
+    }
+
     public int GetLevelCount()
     {
         return _levelCount;
@@ -27,6 +32,7 @@ public class GameProgres : MonoBehaviour
 
     public void AddCountLevel()
     {
+        _addHitPointEnemy++;
         _levelCount++;
     }
 }

@@ -7,18 +7,33 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _enemyHitPoint;
     [SerializeField] private int _coutnAddMoney;
+    private bool isBusst;
     private IPlayerDamage _iPlayerDamage;
     private TextMeshPro _textHitPoint;
     private Animator _animator;
 
-    private void Start()
+
+    private void OnEnable()
     {
         _iPlayerDamage = FindObjectOfType<PlayerBusst>().GetComponent<IPlayerDamage>();
         _animator = GetComponent<Animator>();
         _textHitPoint = GetComponentInChildren<TextMeshPro>();
         UpdateHitPointText();
     }
-    
+
+
+    private void Update()
+    {
+        if (isBusst == false)
+        {
+            AddHitPoint(FindObjectOfType<GameProgres>().GetAddHitPointEnemy());
+            UpdateHitPointText();
+        }
+        
+        isBusst = true;
+        
+    }
+
     private void Die()
     {
         _animator.SetTrigger("Death");
@@ -33,8 +48,7 @@ public class Enemy : MonoBehaviour
 
     public void AddHitPoint(int addHitPoint)
     {
-        _enemyHitPoint += addHitPoint;
-        UpdateHitPointText();
+        _enemyHitPoint *= addHitPoint;
     }
 
     public void TakeDamage(int damage)
