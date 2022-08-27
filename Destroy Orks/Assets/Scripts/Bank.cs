@@ -7,7 +7,12 @@ public class Bank : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _textCountMoney;
     [SerializeField] private int _countMoney;
+    private const string _savekey = "BankSave";
 
+    private void Awake()
+    {
+        Load();
+    }
 
     private void Start()
     {
@@ -26,13 +31,16 @@ public class Bank : MonoBehaviour
 
     public void AddMoney(int addMoney)
     {
+        
         _countMoney += addMoney;
+        Save();
         UpdateUI();
     }
 
     public void Deposit(int depositMoney)
     {
         _countMoney -= depositMoney;
+        Save();
         UpdateUI();
     }
 
@@ -40,4 +48,29 @@ public class Bank : MonoBehaviour
     {
         AdsManager.Instance.ShowAd(this);
     }
+
+    private void Load()
+    {
+        var data = SaveManager.Load<SaveData.BankSave>(_savekey);
+
+        _countMoney = data.countMoney;
+    }
+
+    private void Save()
+    {
+        SaveManager.Save(_savekey, GetSaveSnapshot());
+    }
+
+    private SaveData.BankSave GetSaveSnapshot()
+    {
+        var data = new SaveData.BankSave()
+        {
+            countMoney = _countMoney
+
+        };
+
+        return data;
+    }
+
+
 }

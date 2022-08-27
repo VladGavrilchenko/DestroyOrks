@@ -12,6 +12,13 @@ public class ShopPower : MonoBehaviour
     private PlayerBusst _playerBusst;
     public UnityEvent NewCostEvent;
 
+    private const string _savekey = "ShopSave";
+
+    private void Awake()
+    {
+        Load();
+    }
+
     private void Start()
     {
         _bank = FindObjectOfType<Bank>();
@@ -26,11 +33,35 @@ public class ShopPower : MonoBehaviour
             _playerBusst.AddPower(_addBust);
             _costBusst += _addToCost;
             NewCostEvent.Invoke();
+            Save();
         }
     }
 
     public int GetCost()
     {
         return _costBusst;
+    }
+
+    private void Load()
+    {
+        var data = SaveManager.Load<SaveData.ShopSave>(_savekey);
+
+        _costBusst = data.costBusst;
+
+    }
+
+    private void Save()
+    {
+        SaveManager.Save(_savekey, GetSaveSnapshot());
+    }
+
+    private SaveData.ShopSave GetSaveSnapshot()
+    {
+        var data = new SaveData.ShopSave()
+        {
+            costBusst = _costBusst
+        };
+
+        return data;
     }
 }

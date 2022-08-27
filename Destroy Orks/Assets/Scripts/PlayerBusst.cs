@@ -13,18 +13,12 @@ public class PlayerBusst : MonoBehaviour , IPlayerDamage
 {
     [SerializeField] private int _playerDamage;
     [SerializeField] TextMeshProUGUI _damageText;
+    private const string _savekey = "BusstSave";
+
 
     void Awake()
     {
-        int numGameSessions = FindObjectsOfType<PlayerBusst>().Length;
-        if (numGameSessions > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        Load();
     }
 
 
@@ -36,6 +30,7 @@ public class PlayerBusst : MonoBehaviour , IPlayerDamage
     public void AddPower(int busst)
     {
         _playerDamage += busst;
+        Save();
         UpdateDamageText();
     }
 
@@ -55,5 +50,33 @@ public class PlayerBusst : MonoBehaviour , IPlayerDamage
     public int GetPlayerDamage()
     {
         return _playerDamage;
+    }
+
+    public void SetPlayerDamage(int newPlayerDamage)
+    {
+        _playerDamage = newPlayerDamage;
+    }
+
+    private void Load()
+    {
+        var data = SaveManager.Load<SaveData.BusstSave>(_savekey);
+
+        _playerDamage = data.playerDamage;
+       
+    }
+
+    private void Save()
+    {
+        SaveManager.Save(_savekey, GetSaveSnapshot());
+    }
+
+    private SaveData.BusstSave GetSaveSnapshot()
+    {
+        var data = new SaveData.BusstSave()
+        {
+            playerDamage = _playerDamage
+        };
+
+        return data;
     }
 }

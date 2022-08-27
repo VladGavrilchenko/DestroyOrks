@@ -7,17 +7,12 @@ public class GameProgres : MonoBehaviour
     [SerializeField] private int _addHitPointEnemy;
     private int _levelCount;
 
-    void Awake()
+
+    private const string savekey = "MainSave";
+
+    private void Awake()
     {
-        int numGameSessions = FindObjectsOfType<GameProgres>().Length;
-        if (numGameSessions > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        Load();
     }
 
     public int GetAddHitPointEnemy()
@@ -34,5 +29,32 @@ public class GameProgres : MonoBehaviour
     {
         _addHitPointEnemy++;
         _levelCount++;
+        Save();
+    }
+
+    private void Load()
+    {
+        var data = SaveManager.Load<SaveData.PlayerProfil>(savekey);
+
+        _addHitPointEnemy = data.addHitPointEnemy;
+        _levelCount = data.levelCount;
+    }
+
+    private void Save()
+    {
+        SaveManager.Save(savekey, GetSaveSnapshot());
+    }
+
+    private SaveData.PlayerProfil GetSaveSnapshot()
+    {
+        var data = new SaveData.PlayerProfil()
+        {
+
+            addHitPointEnemy = _addHitPointEnemy,
+            levelCount = _levelCount,
+
+        };
+
+        return data;
     }
 }
