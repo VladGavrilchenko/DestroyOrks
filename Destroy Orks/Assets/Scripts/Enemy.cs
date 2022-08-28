@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        AddHitPoint(FindObjectOfType<GameProgres>().GetAddHitPointEnemy());
+        MultiplyHitPoint(FindObjectOfType<GameProgres>().GetMultiplyHitPointEnemy());
         _iPlayerDamage = FindObjectOfType<PlayerBusst>().GetComponent<IPlayerDamage>();
         _animator = GetComponent<Animator>();
         _textHitPoint = GetComponentInChildren<TextMeshPro>();
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
         _textHitPoint.text = _enemyHitPoint.ToString();
     }
 
-    public void AddHitPoint(int addHitPoint)
+    public void MultiplyHitPoint(int addHitPoint)
     {
         _enemyHitPoint *= addHitPoint;
     }

@@ -7,13 +7,13 @@ namespace SaveData
     [System.Serializable]
     public class PlayerProfil
     {
-        public int addHitPointEnemy;
+        public int multiplyHitPointEnemy;
         public int levelCount;
 
 
         public PlayerProfil()
         {
-            addHitPointEnemy = 1;
+            multiplyHitPointEnemy = 1;
             levelCount = 0;
         }
 

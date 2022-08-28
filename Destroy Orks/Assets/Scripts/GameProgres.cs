@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameProgres : MonoBehaviour
 {
-    [SerializeField] private int _addHitPointEnemy;
+    [SerializeField] private int _multiplyHitPointEnemy;
     private int _levelCount;
 
 
@@ -15,9 +15,9 @@ public class GameProgres : MonoBehaviour
         Load();
     }
 
-    public int GetAddHitPointEnemy()
+    public int GetMultiplyHitPointEnemy()
     {
-        return _addHitPointEnemy;
+        return _multiplyHitPointEnemy;
     }
 
     public int GetLevelCount()
@@ -27,7 +27,7 @@ public class GameProgres : MonoBehaviour
 
     public void AddCountLevel()
     {
-        _addHitPointEnemy++;
+        _multiplyHitPointEnemy++;
         _levelCount++;
         Save();
     }
@@ -36,7 +36,7 @@ public class GameProgres : MonoBehaviour
     {
         var data = SaveManager.Load<SaveData.PlayerProfil>(savekey);
 
-        _addHitPointEnemy = data.addHitPointEnemy;
+        _multiplyHitPointEnemy = data.multiplyHitPointEnemy;
         _levelCount = data.levelCount;
     }
 
@@ -50,7 +50,7 @@ public class GameProgres : MonoBehaviour
         var data = new SaveData.PlayerProfil()
         {
 
-            addHitPointEnemy = _addHitPointEnemy,
+            multiplyHitPointEnemy = _multiplyHitPointEnemy,
             levelCount = _levelCount,
 
         };
