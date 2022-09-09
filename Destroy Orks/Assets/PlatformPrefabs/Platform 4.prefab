@@ -6137,6 +6137,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1950206507395000441, guid: 8de1d94b803c06843855f2e001d4de6a,
         type: 3}
+      propertyPath: _coutnAddMoney
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950206507395000441, guid: 8de1d94b803c06843855f2e001d4de6a,
+        type: 3}
       propertyPath: _enemyHitPoint
       value: 50
       objectReference: {fileID: 0}
